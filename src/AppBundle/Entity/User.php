@@ -20,6 +20,34 @@ class User extends BaseUser
      */
     protected $id;
 
+    /**
+     * @ORM\Column(type="datetime", nullable=true)
+     */
+    protected $firstLogin;
+
+    /**
+     * @ORM\Column(type="integer", length=6, options={"default":0})
+     */
+    protected $loginCount = 0;
+
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    protected $firstName;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    protected $lastName;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    protected $phone;
+
+
+
     public function __construct()
     {
         parent::__construct();
