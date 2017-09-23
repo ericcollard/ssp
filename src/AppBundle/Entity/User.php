@@ -46,12 +46,21 @@ class User extends BaseUser
      */
     protected $phone;
 
+    /**
+     * @ORM\OneToMany(targetEntity="Adress", mappedBy="user", cascade={"remove","persist"})
+     */
+    protected $adresses;
 
 
     public function __construct()
     {
         parent::__construct();
-        // your own logic
+        $this->adresses = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    function __toString()
+    {
+        return $this->username;
     }
 
     /**
@@ -172,5 +181,49 @@ class User extends BaseUser
     public function getPhone()
     {
         return $this->phone;
+    }
+
+    /**
+     * Add adress
+     *
+     * @param \AppBundle\Entity\Adress $adress
+     *
+     * @return User
+     */
+    public function addAdress(\AppBundle\Entity\Adress $adress)
+    {
+        $this->adresses[] = $adress;
+
+        return $this;
+    }
+
+    /**
+     * Remove adress
+     *
+     * @param \AppBundle\Entity\Adress $adress
+     */
+    public function removeAdress(\AppBundle\Entity\Adress $adress)
+    {
+        $this->adresses->removeElement($adress);
+    }
+
+    /**
+     * Get adresses
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getAdresses()
+    {
+        return $this->adresses;
+    }
+
+    /**
+     * Set adresses
+     *
+     * @param \Doctrine\Common\Collections\Collection $adresses
+     */
+    public function setAdresses(\Doctrine\Common\Collections\Collection $adresses)
+    {
+        $this->adresses = $adresses;
     }
 }
