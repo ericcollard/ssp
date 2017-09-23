@@ -53,4 +53,124 @@ class User extends BaseUser
         parent::__construct();
         // your own logic
     }
+
+    /**
+     * Set firstLogin
+     *
+     * @param \DateTime $firstLogin
+     *
+     * @return User
+     */
+    public function setFirstLogin($firstLogin)
+    {
+        $this->firstLogin = $firstLogin;
+
+        return $this;
+    }
+
+    /**
+     * Get firstLogin
+     *
+     * @return \DateTime
+     */
+    public function getFirstLogin()
+    {
+        return $this->firstLogin;
+    }
+
+    /**
+     * Set loginCount
+     *
+     * @param integer $loginCount
+     *
+     * @return User
+     */
+    public function setLoginCount($loginCount)
+    {
+        $this->loginCount = $loginCount;
+
+        return $this;
+    }
+
+    /**
+     * Get loginCount
+     *
+     * @return integer
+     */
+    public function getLoginCount()
+    {
+        return $this->loginCount;
+    }
+
+    /**
+     * Set firstName
+     *
+     * @param string $firstName
+     *
+     * @return User
+     */
+    public function setFirstName($firstName)
+    {
+        $this->firstName = $firstName;
+
+        return $this;
+    }
+
+    /**
+     * Get firstName
+     *
+     * @return string
+     */
+    public function getFirstName()
+    {
+        return $this->firstName;
+    }
+
+    /**
+     * Set lastName
+     *
+     * @param string $lastName
+     *
+     * @return User
+     */
+    public function setLastName($lastName)
+    {
+        $this->lastName = $lastName;
+
+        return $this;
+    }
+
+    /**
+     * Get lastName
+     *
+     * @return string
+     */
+    public function getLastName()
+    {
+        return $this->lastName;
+    }
+
+    /**
+     * Set phone
+     *
+     * @param string $phone
+     *
+     * @return User
+     */
+    public function setPhone($phone)
+    {
+        $this->phone = $phone;
+
+        return $this;
+    }
+
+    /**
+     * Get phone
+     *
+     * @return string
+     */
+    public function getPhone()
+    {
+        return $this->phone;
+    }
 }
