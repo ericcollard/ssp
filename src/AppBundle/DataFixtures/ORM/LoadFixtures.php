@@ -25,6 +25,8 @@ class LoadFixtures implements FixtureInterface
         $user->setEnabled(true);
         $user->setEmail('eric.collard@free.fr');
         $user->setRoles(['ROLE_ADMIN']);
+        $user->setFirstName('Eric');
+        $user->setLastName('COLLARD');
         $manager->persist($user);
         $manager->flush();
 

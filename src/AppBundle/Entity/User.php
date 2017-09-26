@@ -51,11 +51,23 @@ class User extends BaseUser
      */
     protected $adresses;
 
+    /**
+     * @ORM\OneToMany(targetEntity="Transaction", mappedBy="vendor", cascade={"remove","persist"})
+     */
+    protected $transactionsVendor;
+
+    /**
+     * @ORM\OneToMany(targetEntity="Transaction", mappedBy="buyer", cascade={"remove","persist"})
+     */
+    protected $transactionsBuyer;
+
 
     public function __construct()
     {
         parent::__construct();
         $this->adresses = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->transactionsVendor = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->transactionsBuyer = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
     function __toString()
@@ -225,5 +237,73 @@ class User extends BaseUser
     public function setAdresses(\Doctrine\Common\Collections\Collection $adresses)
     {
         $this->adresses = $adresses;
+    }
+
+    /**
+     * Add transactionsVendor
+     *
+     * @param \AppBundle\Entity\Transaction $transactionsVendor
+     *
+     * @return User
+     */
+    public function addTransactionsVendor(\AppBundle\Entity\Transaction $transactionsVendor)
+    {
+        $this->transactionsVendor[] = $transactionsVendor;
+
+        return $this;
+    }
+
+    /**
+     * Remove transactionsVendor
+     *
+     * @param \AppBundle\Entity\Transaction $transactionsVendor
+     */
+    public function removeTransactionsVendor(\AppBundle\Entity\Transaction $transactionsVendor)
+    {
+        $this->transactionsVendor->removeElement($transactionsVendor);
+    }
+
+    /**
+     * Get transactionsVendor
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getTransactionsVendor()
+    {
+        return $this->transactionsVendor;
+    }
+
+    /**
+     * Add transactionsBuyer
+     *
+     * @param \AppBundle\Entity\Transaction $transactionsBuyer
+     *
+     * @return User
+     */
+    public function addTransactionsBuyer(\AppBundle\Entity\Transaction $transactionsBuyer)
+    {
+        $this->transactionsBuyer[] = $transactionsBuyer;
+
+        return $this;
+    }
+
+    /**
+     * Remove transactionsBuyer
+     *
+     * @param \AppBundle\Entity\Transaction $transactionsBuyer
+     */
+    public function removeTransactionsBuyer(\AppBundle\Entity\Transaction $transactionsBuyer)
+    {
+        $this->transactionsBuyer->removeElement($transactionsBuyer);
+    }
+
+    /**
+     * Get transactionsBuyer
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getTransactionsBuyer()
+    {
+        return $this->transactionsBuyer;
     }
 }
